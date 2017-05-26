@@ -10,7 +10,7 @@ docker run --rm -it --network=host jaegertracing/all-in-one
 docker run --rm -it -p 9411:9411 openzipkin/zipkin
 ```
 
-## Spring boot
+## Spring Boot
 [Video](https://youtu.be/RvCcWltMY7U)
 
 ```bash
