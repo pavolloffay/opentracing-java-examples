@@ -11,6 +11,8 @@ docker run --rm -it -p 9411:9411 openzipkin/zipkin
 ```
 
 ## Spring boot
+[Video](https://youtu.be/RvCcWltMY7U)
+
 ```bash
 mvnw clean install
 java -jar target/demo-opentracing-0.0.1-SNAPSHOT.jar
