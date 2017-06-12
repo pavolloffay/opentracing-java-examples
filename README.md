@@ -17,3 +17,13 @@ docker run --rm -it -p 9411:9411 openzipkin/zipkin
 mvnw clean install
 java -jar target/demo-opentracing-0.0.1-SNAPSHOT.jar
 ```
+
+## Jaeger
+```bash
+docker run --rm -it --network=host jaegertracing/all-in-one`
+```
+
+## Zipkin
+```bash
+docker run --rm -it -p 9411:9411 openzipkin/zipkin
+```
