@@ -17,3 +17,10 @@ docker run --rm -it -p 9411:9411 openzipkin/zipkin
 mvnw clean install
 java -jar target/demo-opentracing-0.0.1-SNAPSHOT.jar
 ```
+
+## JAX-RS (Wilfly Swarm)
+[Vide](https://youtu.be/gVwLenPH8SY)
+
+```bash
+mvn wildfly-swarm:run
+```
