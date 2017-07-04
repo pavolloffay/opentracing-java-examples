@@ -18,12 +18,9 @@ mvnw clean install
 java -jar target/demo-opentracing-0.0.1-SNAPSHOT.jar
 ```
 
-## Jaeger
-```bash
-docker run --rm -it --network=host jaegertracing/all-in-one`
-```
+## JAX-RS (Wilfly Swarm)
+[Vide](https://youtu.be/gVwLenPH8SY)
 
-## Zipkin
 ```bash
-docker run --rm -it -p 9411:9411 openzipkin/zipkin
+mvn wildfly-swarm:run
 ```
