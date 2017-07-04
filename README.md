@@ -19,7 +19,7 @@ java -jar target/demo-opentracing-0.0.1-SNAPSHOT.jar
 ```
 
 ## JAX-RS (Wilfly Swarm)
-[Vide](https://youtu.be/gVwLenPH8SY)
+[Video](https://youtu.be/gVwLenPH8SY)
 
 ```bash
 mvn wildfly-swarm:run
