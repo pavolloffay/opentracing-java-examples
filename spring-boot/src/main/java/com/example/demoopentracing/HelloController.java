@@ -22,7 +22,7 @@ public class HelloController {
 
     @RequestMapping("/chaining")
     public String chaining() {
-        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8080/hello", String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity("http://say-hello/hello", String.class);
         return "Chaining + " + response.getBody();
     }
 }
