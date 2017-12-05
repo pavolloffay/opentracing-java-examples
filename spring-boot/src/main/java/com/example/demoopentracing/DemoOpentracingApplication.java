@@ -1,7 +1,7 @@
 package com.example.demoopentracing;
 
-import brave.Span;
 import brave.Tracing;
+import brave.opentracing.BraveTracer;
 import com.uber.jaeger.Tracer.Builder;
 import com.uber.jaeger.metrics.Metrics;
 import com.uber.jaeger.metrics.NullStatsReporter;
@@ -18,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 import com.uber.jaeger.propagation.b3.B3TextMapCodec;
 
 
+import zipkin.Span;
 import zipkin.reporter.AsyncReporter;
 import zipkin.reporter.okhttp3.OkHttpSender;
 
@@ -37,20 +38,16 @@ public class DemoOpentracingApplication {
 				new ConstSampler(true))
 				.registerInjector(Builtin.HTTP_HEADERS, new B3TextMapCodec())
 				.registerExtractor(Builtin.HTTP_HEADERS, new B3TextMapCodec());
-
 		return builder.build();
-//		return new Configuration("spring-boot", new Configuration.SamplerConfiguration(ProbabilisticSampler.TYPE, 1),
-//				new Configuration.ReporterConfiguration())
-//				.getTracer();
 	}
 
 //	@Bean
-//	public io.opentracing.Tracer zipkinTracer() {
-//		OkHttpSender okHttpSender = OkHttpSender.create("http://zipkin.istio-system:9411/api/v1/spans");
-//		AsyncReporter<Span> reporter = AsyncReporter.builder(okHttpSender).build();
-//		Tracing braveTracer = Tracing.newBuilder().localServiceName("spring-boot").reporter(reporter).build();
-//		return BraveTracer.create(braveTracer);
-//	}
+	public io.opentracing.Tracer zipkinTracer() {
+		OkHttpSender okHttpSender = OkHttpSender.create("http://zipkin.istio-system:9411/api/v1/spans");
+		AsyncReporter<Span> reporter = AsyncReporter.builder(okHttpSender).build();
+		Tracing braveTracer = Tracing.newBuilder().localServiceName("spring-boot").reporter(reporter).build();
+		return BraveTracer.create(braveTracer);
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoOpentracingApplication.class, args);

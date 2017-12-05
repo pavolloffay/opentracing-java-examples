@@ -15,7 +15,7 @@ docker run --rm -it -p 9411:9411 openzipkin/zipkin
 
 ```bash
 eval $(minikube docker-env) 
-mvnw clean install && docker build -t spring-boot:latest .
+./mvnw clean install && docker build -t spring-boot:latest .
 kubectl apply -f <(istioctl kube-inject -f app.yml)
 # Optional to delete all -> kubectl delete all,ing -l sb-demo
 ```

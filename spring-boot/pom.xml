@@ -41,18 +41,16 @@
 			<artifactId>jaeger-core</artifactId>
 			<version>0.21.0</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.uber.jaeger/jaeger-b3 -->
 		<dependency>
 			<groupId>com.uber.jaeger</groupId>
 			<artifactId>jaeger-b3</artifactId>
 			<version>0.21.0</version>
 		</dependency>
 
-		<!-- todo fix OT version 0.22.1-->
 		<dependency>
 			<groupId>io.opentracing.brave</groupId>
 			<artifactId>brave-opentracing</artifactId>
-			<version>0.22.0</version>
+			<version>0.21.0</version>
 		</dependency>
 		<dependency>
 			<groupId>io.zipkin.reporter</groupId>
