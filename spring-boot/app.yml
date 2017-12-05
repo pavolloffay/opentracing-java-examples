@@ -1,0 +1,59 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: spring-boot
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: spring-boot
+        service: spring-boot
+        sb-demo: sb-demo-deployment
+    spec:
+      containers:
+      - name: spring-boot
+        image: spring-boot:latest
+        imagePullPolicy: Never
+        ports:
+        - name: http
+          containerPort: 8080
+        - name: rest-api
+          containerPort: 8080
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: spring-boot
+  labels:
+    service: spring-boot
+    sb-demo: sb-demo-service
+spec:
+  type: LoadBalancer
+  selector:
+    service: spring-boot
+  ports:
+  - name: http
+    port: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gateway-sb-demo
+  annotations:
+    kubernetes.io/ingress.class: "istio"
+  labels:
+    sb-demo: sb-demo-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /hello
+        backend:
+          serviceName: spring-boot
+          servicePort: 8080
+#          TODO not working 504 timeout
+      - path: /chaining
+        backend:
+          serviceName: spring-boot
+          servicePort: 8080
