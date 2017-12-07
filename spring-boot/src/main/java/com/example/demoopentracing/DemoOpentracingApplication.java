@@ -30,7 +30,7 @@ public class DemoOpentracingApplication {
 		return restTemplateBuilder.build();
 	}
 
-	@Bean
+//	@Bean
 	public io.opentracing.Tracer jaegerTracer() {
 		Builder builder = new Builder("spring-boot",
 				new RemoteReporter(new HttpSender("http://jaeger-collector.istio-system:14268/api/traces"), 10,
